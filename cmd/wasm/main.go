@@ -18,6 +18,6 @@ func publicKeyFromPassword(this js.Value, args []js.Value) any {
 	password := args[0]
 	salt := args[1]
 	key := easyecc.NewPrivateKeyFromPassword([]byte(password.String()), []byte(salt.String()))
-	keyHex := fmt.Sprintf("%X", key.PublicKey().SerializeCompressed())
+	keyHex := fmt.Sprintf("0x%x", key.PublicKey().SerializeCompressed())
 	return js.ValueOf(keyHex)
 }
